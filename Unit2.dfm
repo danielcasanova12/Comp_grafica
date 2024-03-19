@@ -2,8 +2,8 @@ object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 'Form2'
-  ClientHeight = 669
-  ClientWidth = 846
+  ClientHeight = 1000
+  ClientWidth = 500
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -36,14 +36,14 @@ object Form2: TForm2
     Left = 602
     Top = 24
     Width = 57
-    Height = 26
+    Height = 15
     Caption = 'Pologonos'
   end
   object Label3: TLabel
     Left = 600
     Top = 200
-    Width = 105
-    Height = 23
+    Width = 37
+    Height = 15
     Caption = 'Pontos'
   end
   object Panel1: TPanel
