@@ -124,3 +124,19 @@ int x,y;
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm2::Image1Click(TObject *Sender)
+{
+
+	ShowMessage("sdasd");
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::lbPoligonosClick(TObject *Sender)
+{
+//	display.lbPoligonos-> ItemIndex.mostraPontos(lbPontos);
+	 display.poligono[lbPoligonos->ItemIndex].mostraPontos(lbPontos);
+
+}
+//---------------------------------------------------------------------------
+

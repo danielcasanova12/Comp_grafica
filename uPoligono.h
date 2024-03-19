@@ -13,7 +13,8 @@ class Poligono{
 	char tipo;
 	std::vector<Ponto> pontos;
 			void desenhar(TCanvas *canvas, Janela mundo,Janela vp);
-            void mostra(TListBox *listbox);
+			void mostra(TListBox *listbox);
+            void mostraPontos(TListBox *listbox);
 };
 
 

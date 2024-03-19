@@ -21,9 +21,14 @@ int xvp, yvp;
 
 void Poligono::mostra(TListBox *listbox)
 {
-    listbox->Items->Add(IntToStr(id) + " - " + tipo + " - " + IntToStr((int) pontos.size()));
+    listbox->Items->Add(IntToStr(id) + " - " + tipo + " - " + IntToStr((int) pontos.size()) + " Pontos");
 }
-
-
+void Poligono::mostraPontos(TListBox *listbox)
+{
+	listbox->Items->Clear();
+	for (int i = 0; i < 10; i++) {
+        listbox->Items->Add(pontos[i].mostraPonto());
+	}
+}
 
 

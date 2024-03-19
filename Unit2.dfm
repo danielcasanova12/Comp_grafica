@@ -58,6 +58,7 @@ object Form2: TForm2
       Width = 500
       Height = 500
       Align = alClient
+      OnClick = Image1Click
       OnMouseMove = Image1MouseMove
       ExplicitLeft = 78
       ExplicitTop = 2
@@ -79,6 +80,7 @@ object Form2: TForm2
     Height = 97
     ItemHeight = 15
     TabOrder = 2
+    OnClick = lbPoligonosClick
   end
   object lbPontos: TListBox
     Left = 584

@@ -24,6 +24,8 @@ __published:	// IDE-managed Components
 	TLabel *Label3;
 	void __fastcall Image1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Image1Click(TObject *Sender);
+	void __fastcall lbPoligonosClick(TObject *Sender);
 
 
 private:	// User declarations
