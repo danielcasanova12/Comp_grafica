@@ -14,7 +14,7 @@ class DisplayFile{
 
 		void desenhar(TCanvas *canvas, Janela mundo,Janela vp);
 
-
+               void mostra(TListBox *listbox);
 
 
 };

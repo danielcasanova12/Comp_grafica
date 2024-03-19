@@ -19,6 +19,10 @@ int xvp, yvp;
 	}
 }
 
+void Poligono::mostra(TListBox *listbox)
+{
+    listbox->Items->Add(IntToStr(id) + " - " + tipo + " - " + IntToStr((int) pontos.size()));
+}
 
 
 

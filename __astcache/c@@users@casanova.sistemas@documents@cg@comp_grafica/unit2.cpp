@@ -66,7 +66,8 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 	display.poligono.push_back(Pol);
 	Pol.pontos.clear();
 
-    display.desenhar(Form2->Image1->Canvas,mundo,vp);
+	display.desenhar(Form2->Image1->Canvas,mundo,vp);
+    display.mostra(Form2->lbPoligonos);
 
 //	//colocando reta horizontal
 //	Form2->Image1->Canvas->Pen->Color = clBlack;
@@ -102,9 +103,9 @@ void __fastcall TForm2::Image1MouseMove(TObject *Sender, TShiftState Shift, int 
 	yW= yVp2Mundo(Y,mundo,vp);
 
 	lbmundo->Caption = "(" + FloatToStr(xW) + "; " + FloatToStr(yW) + ")";
-//    Form2->Image1->Canvas->Pen->Color = clBlue;
+//	Form2->Image1->Canvas->Pen->Color = clBlue;
 //	Form2->Image1->Canvas->Pen->Width = 2;
-//	Form2->Image1->Canvas->Ellipse(X-50,Y+50,X+50,Y-50);
+//	Form2->Image1->Canvas->Ellipse(X-2,Y+2,X+2,Y-2);
 
 
 }

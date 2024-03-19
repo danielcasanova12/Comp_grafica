@@ -25,7 +25,15 @@ void DisplayFile::desenhar(TCanvas *canvas, Janela mundo,Janela vp){
 	double xx3 = mundo.yMin;
 	double xx4 = mundo.yMax;
 
-	for (int i = 0; i < Poligono.size(); i++) {
-		Poligono[i].desenhar(canvas, mundo, vp);
+	for (int i = 0; i < poligono.size(); i++) {
+		poligono[i].desenhar(canvas, mundo, vp);
 	}
+}
+
+DisplayFile::mostra(TlistBox *listbox){
+	 listbox -> Clear();
+	 for (int i = 0; i < poligono.size(); i++) {
+		poligono[i].mostra(listbox);
+	}
+
 }

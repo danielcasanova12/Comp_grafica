@@ -29,3 +29,11 @@ void DisplayFile::desenhar(TCanvas *canvas, Janela mundo,Janela vp){
 		poligono[i].desenhar(canvas, mundo, vp);
 	}
 }
+
+void DisplayFile::mostra(TListBox *listbox)
+{
+	listbox->Clear();
+	for (int i = 0; i < poligono.size(); i++) {
+		poligono[i].mostra(listbox);
+	}
+}
