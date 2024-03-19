@@ -3,6 +3,8 @@
 #ifndef uPontoH
 #define uPontoH
 #include "uJanela.h"
+#include <Vcl.Forms.hpp>
+#include <Vcl.Controls.hpp>
 
 class Ponto{
 public:

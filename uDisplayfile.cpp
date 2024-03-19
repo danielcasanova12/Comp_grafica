@@ -4,6 +4,7 @@
 
 #include "uDisplayfile.h"
 #include "uJanela.h"
+#include "uPoligono.h"
 
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -11,6 +12,20 @@
 void DisplayFile::desenhar(TCanvas *canvas, Janela mundo,Janela vp){
 	canvas->Pen->Color = clBlack;
 	canvas->Pen->Width = 3;
+	canvas->MoveTo(0,250);
+	canvas->LineTo(500,250);
+
+	canvas->Pen->Color = clBlack;
+	canvas->Pen->Width = 3;
 	canvas->MoveTo(250,0);
 	canvas->LineTo(250,500);
+
+	double xx1 = mundo.xMin;
+	double xx2 = mundo.xMax;
+	double xx3 = mundo.yMin;
+	double xx4 = mundo.yMax;
+
+	for (int i = 0; i < poligono.size(); i++) {
+		poligono[i].desenhar(canvas, mundo, vp);
+	}
 }

@@ -14,5 +14,8 @@ class DisplayFile{
 
 		void desenhar(TCanvas *canvas, Janela mundo,Janela vp);
 
+
+
+
 };
 #endif
