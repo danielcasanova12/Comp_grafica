@@ -187,6 +187,10 @@ void __fastcall TForm2::Image1MouseDown(TObject *Sender, TMouseButton Button, TS
 void __fastcall TForm2::Button2Click(TObject *Sender)
 {
   mundo.xMin = StrToFloat(edXmin -> Text);
+  mundo.xMax = StrToFloat(edXmax -> Text);
+  mundo.yMin = StrToFloat(edYmin -> Text);
+  mundo.yMin = StrToFloat(edYmax -> Text);
+  display.desenha(Form2->Image1->Canvas,mundo,vp)
 }
 //---------------------------------------------------------------------------
 
