@@ -12,13 +12,13 @@
 void DisplayFile::desenhar(TCanvas *canvas, Janela mundo,Janela vp){
 	canvas->Pen->Color = clBlack;
 	canvas->Pen->Width = 3;
-	canvas->MoveTo(0,250);
-	canvas->LineTo(500,250);
+ //	canvas->MoveTo(0,250);
+  //	canvas->LineTo(500,250);
 
 	canvas->Pen->Color = clBlack;
 	canvas->Pen->Width = 3;
-	canvas->MoveTo(250,0);
-	canvas->LineTo(250,500);
+  //	canvas->MoveTo(250,0);
+   //	canvas->LineTo(250,500);
 
 	double xx1 = mundo.xMin;
 	double xx2 = mundo.xMax;
@@ -29,12 +29,24 @@ void DisplayFile::desenhar(TCanvas *canvas, Janela mundo,Janela vp){
 		poligono[i].desenhar(canvas, mundo, vp);
 	}
 }
+void DisplayFile::desenha(TCanvas *canvas, Janela mundo, Janela vp)
+{
+	canvas->Brush->Color = clSilver;
+	canvas->FillRect(Rect(0,0,500,500));
 
-DisplayFile::mostra(*TlistBox *listbox){
-	 listbox -> Clear();
-	 for (int i = 0; i < poligono.size(); i++) {
-		poligono[i].mostra(listbox;
+	canvas->Pen->Color = clBlack;
+	canvas->Pen->Width = 3.0;
+
+	for (int i = 0; i < poligonos.size(); i++) {
+		poligonos[i].desenha(canvas, mundo, vp);
 	}
-	 listbox->Add(Ponto(10,10).mostraPonto());
 
+}
+
+void DisplayFile::mostra(TListBox *listbox)
+{
+	listbox->Clear();
+	for (int i = 0; i < poligono.size(); i++) {
+		poligono[i].mostra(listbox);
+	}
 }

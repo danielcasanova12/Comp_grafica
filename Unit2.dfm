@@ -46,6 +46,34 @@ object Form2: TForm2
     Height = 15
     Caption = 'Pontos'
   end
+  object Label4: TLabel
+    Left = 656
+    Top = 395
+    Width = 27
+    Height = 15
+    Caption = 'xMin'
+  end
+  object Label5: TLabel
+    Left = 656
+    Top = 452
+    Width = 29
+    Height = 15
+    Caption = 'xMax'
+  end
+  object Label6: TLabel
+    Left = 800
+    Top = 395
+    Width = 27
+    Height = 15
+    Caption = 'yMin'
+  end
+  object Label7: TLabel
+    Left = 800
+    Top = 445
+    Width = 29
+    Height = 15
+    Caption = 'xMax'
+  end
   object Panel1: TPanel
     Left = 0
     Top = 0
@@ -59,6 +87,7 @@ object Form2: TForm2
       Height = 500
       Align = alClient
       OnClick = Image1Click
+      OnMouseDown = Image1MouseDown
       OnMouseMove = Image1MouseMove
       ExplicitLeft = 78
       ExplicitTop = 2
@@ -69,7 +98,7 @@ object Form2: TForm2
     Top = 498
     Width = 75
     Height = 25
-    Caption = 'Button1'
+    Caption = 'Inicializa'
     TabOrder = 1
     OnClick = Button1Click
   end
@@ -89,5 +118,46 @@ object Form2: TForm2
     Height = 121
     ItemHeight = 15
     TabOrder = 3
+  end
+  object edYmin: TEdit
+    Left = 800
+    Top = 416
+    Width = 121
+    Height = 23
+    TabOrder = 4
+    Text = '-250'
+  end
+  object edYmax: TEdit
+    Left = 800
+    Top = 466
+    Width = 121
+    Height = 23
+    TabOrder = 5
+    Text = '250'
+  end
+  object edXmin: TEdit
+    Left = 656
+    Top = 416
+    Width = 121
+    Height = 23
+    TabOrder = 6
+    Text = '-250'
+  end
+  object edXmax: TEdit
+    Left = 656
+    Top = 469
+    Width = 121
+    Height = 23
+    TabOrder = 7
+    Text = '250'
+  end
+  object Button2: TButton
+    Left = 752
+    Top = 516
+    Width = 75
+    Height = 25
+    Caption = 'atualizamundo'
+    TabOrder = 8
+    OnClick = Button2Click
   end
 end

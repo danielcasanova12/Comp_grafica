@@ -22,10 +22,22 @@ __published:	// IDE-managed Components
 	TListBox *lbPontos;
 	TLabel *Label1;
 	TLabel *Label3;
+	TEdit *edYmin;
+	TEdit *edYmax;
+	TEdit *edXmin;
+	TEdit *edXmax;
+	TLabel *Label4;
+	TLabel *Label5;
+	TLabel *Label6;
+	TLabel *Label7;
+	TButton *Button2;
 	void __fastcall Image1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Image1Click(TObject *Sender);
 	void __fastcall lbPoligonosClick(TObject *Sender);
+	void __fastcall Image1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Button2Click(TObject *Sender);
 
 
 private:	// User declarations

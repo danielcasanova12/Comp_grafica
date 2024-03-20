@@ -2,8 +2,8 @@ object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 'Form2'
-  ClientHeight = 500
-  ClientWidth = 500
+  ClientHeight = 1000
+  ClientWidth = 1000
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -58,11 +58,11 @@ object Form2: TForm2
       Width = 500
       Height = 500
       Align = alClient
+      OnClick = Image1Click
+      OnMouseDown = Image1MouseDown
       OnMouseMove = Image1MouseMove
-      ExplicitLeft = 128
-      ExplicitTop = 80
-      ExplicitWidth = 105
-      ExplicitHeight = 105
+      ExplicitLeft = 78
+      ExplicitTop = 2
     end
   end
   object Button1: TButton
@@ -70,7 +70,7 @@ object Form2: TForm2
     Top = 498
     Width = 75
     Height = 25
-    Caption = 'Button1'
+    Caption = 'Inicializa'
     TabOrder = 1
     OnClick = Button1Click
   end
@@ -81,6 +81,7 @@ object Form2: TForm2
     Height = 97
     ItemHeight = 15
     TabOrder = 2
+    OnClick = lbPoligonosClick
   end
   object lbPontos: TListBox
     Left = 584
@@ -89,5 +90,37 @@ object Form2: TForm2
     Height = 121
     ItemHeight = 15
     TabOrder = 3
+  end
+  object Edit3: TEdit
+    Left = 800
+    Top = 416
+    Width = 121
+    Height = 23
+    TabOrder = 4
+    Text = 'Edit3'
+  end
+  object Edit4444: TEdit
+    Left = 800
+    Top = 464
+    Width = 121
+    Height = 23
+    TabOrder = 5
+    Text = 'Edit4'
+  end
+  object Edit1: TEdit
+    Left = 656
+    Top = 416
+    Width = 121
+    Height = 23
+    TabOrder = 6
+    Text = 'Edit1'
+  end
+  object Edit444444: TEdit
+    Left = 656
+    Top = 469
+    Width = 121
+    Height = 23
+    TabOrder = 7
+    Text = 'Edit22'
   end
 end

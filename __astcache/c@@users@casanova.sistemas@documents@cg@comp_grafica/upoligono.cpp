@@ -8,14 +8,16 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-void Poligono::desenhar(TCanvas *canvas, Janela mundo,Janela vp){
+void Poligono::desenha(TCanvas *canvas, Janela mundo,Janela vp){
 int xvp, yvp;
 	for(int i = 0; i < pontos.size();i++)
 	{
+		xvp = pontos[i].xW2Vp(mundo, vp);
+		yvp = pontos[i].yW2Vp(mundo, vp);
 		if(i==0){
 			canvas->MoveTo(xvp,yvp);
 		}else
-		 canvas->LineTo(xvp,yvp);
+			canvas->LineTo(xvp,yvp);
 	}
 }
 

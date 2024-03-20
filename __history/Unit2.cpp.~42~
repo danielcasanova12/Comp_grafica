@@ -19,6 +19,8 @@ Ponto(aux);
 Janela mundo(-250,-250,250,250);
 Janela vp(0,0,500,500);
 
+
+bool inicia = false;
 int contId = 0;
 double xVp2Mundo(int xVp, Janela mundo, Janela vp) {
 	return ((xVp - vp.xMin)/(vp.xMax - vp.xMin)) *
@@ -66,7 +68,7 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 	display.poligono.push_back(Pol);
 	Pol.pontos.clear();
 
-	display.desenhar(Form2->Image1->Canvas,mundo,vp);
+	display.desenha(Form2->Image1->Canvas,mundo,vp);
     display.mostra(Form2->lbPoligonos);
 
 //	//colocando reta horizontal
@@ -114,20 +116,21 @@ void __fastcall TForm2::Image1MouseMove(TObject *Sender, TShiftState Shift, int 
 
 void __fastcall TForm2::Button1Click(TObject *Sender)
 {
-int x,y;
-	Ponto aa(0,0);
-	 x=aa.xW2Vp(mundo,vp);
-     y=aa.yW2Vp(mundo,vp);
-	 ShowMessage(IntToStr(x)+ ","+IntToStr(y));
-	 lbPoligonos -> Items -> Clear();
-	 lbPoligonos -> Items->Add(Ponto(10,10).mostraPonto());
+//	int x,y;
+//		Ponto aa(0,0);
+//		 x=aa.xW2Vp(mundo,vp);
+//		 y=aa.yW2Vp(mundo,vp);
+//		 ShowMessage(IntToStr(x)+ ","+IntToStr(y));
+//		 lbPoligonos -> Items -> Clear();
+//		 lbPoligonos -> Items->Add(Ponto(10,10).mostraPonto());
+		 inicia = true;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TForm2::Image1Click(TObject *Sender)
 {
 
-	ShowMessage("sdasd");
+//	ShowMessage("sdasd");
 
 }
 //---------------------------------------------------------------------------
@@ -135,8 +138,45 @@ void __fastcall TForm2::Image1Click(TObject *Sender)
 void __fastcall TForm2::lbPoligonosClick(TObject *Sender)
 {
 //	display.lbPoligonos-> ItemIndex.mostraPontos(lbPontos);
-	 display.Poligono[lbPoligonos->ItemIndex].mostraPontos(lbPontos);
+	int index = lbPoligonos-> ItemIndex;
+	 display.poligono[index].mostraPontos(lbPontos);
 
 }
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Image1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
+{
+
+	double xW,yW;
+
+   if( inicia)
+   {
+	   if(Button == mbLeft)
+	   {
+			xW = xVp2Mundo(X,mundo,vp);
+			yW = yVp2Mundo(Y,mundo,vp);
+			Pol.pontos.push_back(Ponto(xW,yW));
+            Pol.desenhar(Image1->Canvas,mundo,vp);
+
+	   }else
+			if(Button == mbRight)
+			{
+				Pol.id = contId++;
+				Pol.tipo = 'N';
+				display.poligono.push_back(Pol);
+				Pol.pontos.clear();
+				inicia = false;
+				display.desenha(Form2->Image1->Canvas,mundo,vp);
+                display.mostra(Form2->lbPoligonos);
+
+			}
+
+   }
+
+
+
+}
+
 //---------------------------------------------------------------------------
 
