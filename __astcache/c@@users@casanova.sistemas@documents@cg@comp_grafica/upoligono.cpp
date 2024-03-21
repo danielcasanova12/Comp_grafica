@@ -8,7 +8,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-void Poligono::desenha(TCanvas *canvas, Janela mundo,Janela vp){
+void Poligono::desenhar(TCanvas *canvas, Janela mundo,Janela vp){
 int xvp, yvp;
 	for(int i = 0; i < pontos.size();i++)
 	{

@@ -2,8 +2,8 @@ object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 'Form2'
-  ClientHeight = 1000
-  ClientWidth = 1000
+  ClientHeight = 991
+  ClientWidth = 994
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -40,8 +40,8 @@ object Form2: TForm2
     Caption = 'Pologonos'
   end
   object Label3: TLabel
-    Left = 600
-    Top = 200
+    Left = 740
+    Top = 24
     Width = 37
     Height = 15
     Caption = 'Pontos'
@@ -94,8 +94,8 @@ object Form2: TForm2
     end
   end
   object Button1: TButton
-    Left = 584
-    Top = 498
+    Left = 520
+    Top = 538
     Width = 75
     Height = 25
     Caption = 'Inicializa'
@@ -112,10 +112,10 @@ object Form2: TForm2
     OnClick = lbPoligonosClick
   end
   object lbPontos: TListBox
-    Left = 584
-    Top = 229
+    Left = 720
+    Top = 56
     Width = 137
-    Height = 121
+    Height = 97
     ItemHeight = 15
     TabOrder = 3
   end
@@ -152,12 +152,48 @@ object Form2: TForm2
     Text = '250'
   end
   object Button2: TButton
-    Left = 752
+    Left = 720
     Top = 516
-    Width = 75
+    Width = 107
     Height = 25
     Caption = 'atualizamundo'
     TabOrder = 8
     OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 128
+    Top = 592
+    Width = 75
+    Height = 25
+    Caption = '^'
+    TabOrder = 9
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 32
+    Top = 656
+    Width = 75
+    Height = 25
+    Caption = '<'
+    TabOrder = 10
+    OnClick = Button4Click
+  end
+  object Button5: TButton
+    Left = 232
+    Top = 656
+    Width = 75
+    Height = 25
+    Caption = '>'
+    TabOrder = 11
+    OnClick = Button5Click
+  end
+  object Button6: TButton
+    Left = 128
+    Top = 704
+    Width = 75
+    Height = 25
+    Caption = 'v'
+    TabOrder = 12
+    OnClick = Button6Click
   end
 end
