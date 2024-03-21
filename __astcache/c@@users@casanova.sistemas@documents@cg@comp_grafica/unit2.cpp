@@ -103,6 +103,7 @@ void __fastcall TForm2::Image1MouseMove(TObject *Sender, TShiftState Shift, int 
 
 void __fastcall TForm2::Button1Click(TObject *Sender)
 {
+
 		 inicia = true;
 }
 //---------------------------------------------------------------------------
@@ -124,6 +125,7 @@ void __fastcall TForm2::lbPoligonosClick(TObject *Sender)
 
 	polIndex = lbPoligonos->ItemIndex;
     display.poligono[polIndex].mostraPontos(lbPontos);
+	ShowMessage(IntToStr(polIndex));
 
 }
 //---------------------------------------------------------------------------
@@ -200,7 +202,9 @@ void TForm2::atualizaMundo(Janela mundo)
   display.poligono[0].pontos[1].y = mundo.yMin;
   display.poligono[1].pontos[0].x = mundo.xMax;
   display.poligono[1].pontos[1].x = mundo.xMin;
-display.desenha(Form2->Image1->Canvas,mundo,vp);
+  
+	display.desenha(Form2->Image1->Canvas,mundo,vp);
+	Pol.desenhar(Image1->Canvas,mundo,vp);
 	
 }
 
@@ -258,6 +262,12 @@ void __fastcall TForm2::Button8Click(TObject *Sender)
 	mundo.yMin -= 10;
     mundo.yMax += 10;
 	atualizaMundo(mundo);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button9Click(TObject *Sender)
+{
+  inicia = false;
 }
 //---------------------------------------------------------------------------
 
