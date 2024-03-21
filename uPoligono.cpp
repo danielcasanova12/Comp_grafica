@@ -27,10 +27,15 @@ void Poligono::mostra(TListBox *listbox)
 }
 void Poligono::mostraPontos(TListBox *listbox)
 {
+
+//		 listbox->Items->Clear();
+//	for(int x=0; x<pontos.size(); x++){
+//		listbox->Items->Add(pontos[x].mostra());
+//	}
 	listbox->Items->Clear();
-	for (int i = 0; i < 10; i++) {
-        listbox->Items->Add(pontos[i].mostraPonto());
-	}
+	 for (int i = 0; i < 10; i++) {
+         listbox->Items->Add(pontos[i].mostraPonto());
+	 }
 }
 
 

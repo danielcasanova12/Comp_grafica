@@ -118,14 +118,10 @@ void __fastcall TForm2::Image1Click(TObject *Sender)
 
 void __fastcall TForm2::lbPoligonosClick(TObject *Sender)
 {
-//	display.lbPoligonos-> ItemIndex.mostraPontos(lbPontos);
-	// int index = lbPoligonos-> ItemIndex;
-	//  display.poligono[index].mostraPontos(lbPontos);
+	display.lbPoligonos-> ItemIndex.mostraPontos(lbPontos);
+	 int index = lbPoligonos-> ItemIndex;
+	  display.poligono[index].mostraPontos(lbPontos);
 
-
-	polIndex = lbPoligonos->ItemIndex;
-    display.poligono[polIndex].mostraPontos(lbPontos);
-	ShowMessage(IntToStr(polIndex));
 
 }
 //---------------------------------------------------------------------------
