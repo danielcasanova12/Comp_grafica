@@ -186,7 +186,7 @@ void __fastcall TForm2::Button2Click(TObject *Sender)
 
 void TForm2::atualizaMundo(Janela mundo)
 {
- ShowMessage(edXmax -> Text);
+// ShowMessage(edXmax -> Text);
   edYmin -> Text = mundo.yMin;
   edYmax -> Text = mundo.yMax;
   edXmin -> Text = mundo.xMin;
@@ -202,12 +202,37 @@ display.desenha(Form2->Image1->Canvas,mundo,vp);
 
 void __fastcall TForm2::Button3Click(TObject *Sender)
 {
-	mundo.yMin -= 10;
-	mundo.yMax -= 10;
+	mundo.yMin += 10;
+	mundo.yMax += 10;
 	atualizaMundo(mundo);
 
 
 
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm2::Button5Click(TObject *Sender)
+{
+		mundo.xMin += 10;
+	mundo.xMax += 10;
+	atualizaMundo(mundo);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button4Click(TObject *Sender)
+{
+			mundo.xMin -= 10;
+	mundo.xMax -= 10;
+	atualizaMundo(mundo);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::Button6Click(TObject *Sender)
+{
+				mundo.yMin -= 10;
+	mundo.yMax -= 10;
+	atualizaMundo(mundo);
 }
 //---------------------------------------------------------------------------
 
