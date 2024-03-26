@@ -10,7 +10,7 @@
 #pragma package(smart_init)
 
 
-void DisplayFile::desenha(TCanvas *canvas, Janela mundo, Janela vp)
+void DisplayFile::desenha(TCanvas *canvas, Janela mundo, Janela vp,int tipoReta)
 {
 	canvas->Brush->Color = clSilver;
 	canvas->FillRect(Rect(0,0,500,500));
@@ -19,7 +19,7 @@ void DisplayFile::desenha(TCanvas *canvas, Janela mundo, Janela vp)
 	canvas->Pen->Width = 3.0;
 
 	for (int i = 0; i < poligono.size(); i++) {
-			poligono[i].desenhar(canvas, mundo, vp);
+			poligono[i].desenhar(canvas, mundo, vp,tipoReta);
 	}
 
 }

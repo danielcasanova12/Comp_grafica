@@ -8,72 +8,73 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 
-// void Poligono::desenhar(TCanvas *canvas, Janela mundo,Janela vp){
+// void Poligono::desenhar(TCanvas *canvas, Janela mundo,Janela vp, int tipoReta){
 // int xvp, yvp;
-// 	for(int i = 0; i < pontos.size();i++)
-// 	{
-// 		xvp = pontos[i].xW2Vp(mundo, vp);
-// 		yvp = pontos[i].yW2Vp(mundo, vp);
-// 		if(i==0){
-// 			canvas->MoveTo(xvp,yvp);
-// 		}else
-// 			canvas->LineTo(xvp,yvp);
-// 	}
-// }
-void Poligono::desenha(TCanvas* canvas, Janela mundo, Janela vp, int tipoReta){
-	int xvp, yvp,xc,yc;
-	if (tipo == 'C') {
-		canvas->Pixels[xvp][yvp] = clBlack;
-		for(int i =0;i < pontos.size();i++){
-			xvp = pontos[i].xW2Vp(mundo, vp);
-			yvp = pontos[i].yW2Vp(mundo, vp);
-			if(i==0){
-				xc = xvp;
-				yc = yvp;
-			}else{
-//				int r = sqrt(pow(xvp - xc, 2) + pow(yvp - yc, 2));
-//				desenhaCircunferencia(canvas, xc, yc, r);
-			}
-		}
+//	for(int i = 0; i < pontos.size();i++)
+//	{
+//		xvp = pontos[i].xW2Vp(mundo, vp);
+//		yvp = pontos[i].yW2Vp(mundo, vp);
+//		if(i==0){
+//			canvas->MoveTo(xvp,yvp);
+//		}else
+//			canvas->LineTo(xvp,yvp);
+//	}
 
-	}
-	else if (tipo == 'R' || tipo == 'E') {
-		if (tipoReta == 0) {
-			//Move to
-			canvas->Pen->Color = clBlack;
-			for(int i=0; i < pontos.size(); i++){
-				xvp = pontos[i].xW2Vp(mundo, vp);
-				yvp = pontos[i].yW2Vp(mundo, vp);
-				if (i==0)
-					canvas->MoveTo(xvp, yvp);
-				else
-					canvas->LineTo(xvp, yvp);
-			}
-		}
-		else if (tipoReta == 1) {
-			//DDA
-			canvas->Pen->Color = clRed;
-			for(int i=0; i < pontos.size()-1; i++){
-				DDA(canvas,pontos[i], pontos[i+1],mundo,vp);
-			}
-		}
-		else {
-			canvas->Pen->Color = clBlue;
-			// bresenham
-			for (int i=0; i < pontos.size()-1; i++) {
-				Bresenham(canvas,pontos[i], pontos[i+1],mundo,vp);
-			}
 
-		}
-	}
-
-}
+//void Poligono::desenhar(TCanvas* canvas, Janela mundo, Janela vp, int tipoReta){
+//	int xvp, yvp,xc,yc;
+//	if (tipo == 'C') {
+//		canvas->Pixels[xvp][yvp] = clBlack;
+//		for(int i =0;i < pontos.size();i++){
+//			xvp = pontos[i].xW2Vp(mundo, vp);
+//			yvp = pontos[i].yW2Vp(mundo, vp);
+//			if(i==0){
+//				xc = xvp;
+//				yc = yvp;
+//			}else{
+////				int r = sqrt(pow(xvp - xc, 2) + pow(yvp - yc, 2));
+////				desenhaCircunferencia(canvas, xc, yc, r);
+//			}
+//		}
+//
+//	}
+//	else if (tipo == 'R' || tipo == 'E') {
+//		if (tipoReta == 0) {
+//			//Move to
+//			canvas->Pen->Color = clBlack;
+//			for(int i=0; i < pontos.size(); i++){
+//				xvp = pontos[i].xW2Vp(mundo, vp);
+//				yvp = pontos[i].yW2Vp(mundo, vp);
+//				if (i==0)
+//					canvas->MoveTo(xvp, yvp);
+//				else
+//					canvas->LineTo(xvp, yvp);
+//			}
+//		}
+//		else if (tipoReta == 1) {
+//			//DDA
+//			canvas->Pen->Color = clRed;
+//			for(int i=0; i < pontos.size()-1; i++){
+//				DDA(canvas,pontos[i], pontos[i+1],mundo,vp);
+//			}
+//		}
+//		else {
+//			canvas->Pen->Color = clBlue;
+//			// bresenham
+//			for (int i=0; i < pontos.size()-1; i++) {
+//				Bresenham(canvas,pontos[i], pontos[i+1],mundo,vp);
+//			}
+//
+//		}
+//	}
+//
+//}
 
 
 
 void Poligono::mostra(TListBox *listbox)
 {
-    listbox->Items->Add(IntToStr(id) + " - " + tipo + " - " + IntToStr((int) pontos.size()) + " Pontos");
+	listbox->Items->Add(IntToStr(id) + " - " + tipo + " - " + IntToStr((int) pontos.size()) + " Pontos");
 }
 void Poligono::mostraPontos(TListBox *listbox)
 {
@@ -138,3 +139,38 @@ void Poligono::Bresenham(TCanvas* canvas, Ponto pontoinicial, Ponto pontofinal,J
 
 	canvas->Pixels[x2][y2] = clBlue;
 }
+
+
+
+
+
+void Poligono::desenhar(TCanvas *canvas, Janela mundo,Janela vp, int tipoReta){
+ int xvp, yvp;
+            if (tipoReta == 0) {
+			canvas->Pen->Color = clBlack;
+			for(int i=0; i < pontos.size(); i++){
+				xvp = pontos[i].xW2Vp(mundo, vp);
+				yvp = pontos[i].yW2Vp(mundo, vp);
+				if (i==0)
+					canvas->MoveTo(xvp, yvp);
+				else
+					canvas->LineTo(xvp, yvp);
+			}
+		}
+		else if (tipoReta == 1) {
+			//DDA
+			canvas->Pen->Color = clRed;
+			for(int i=0; i < pontos.size()-1; i++){
+//				DDA(canvas,pontos[i], pontos[i+1],mundo,vp);
+			}
+		}
+		else {
+			canvas->Pen->Color = clBlue;
+			// bresenham
+			for (int i=0; i < pontos.size()-1; i++) {
+//				Bresenham(canvas,pontos[i], pontos[i+1],mundo,vp);
+			}
+
+		}
+
+ }
