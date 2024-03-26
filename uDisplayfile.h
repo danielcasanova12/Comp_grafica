@@ -12,7 +12,7 @@ class DisplayFile{
 	public:
 		std::vector <Poligono> poligono;
 
-		void desenha(TCanvas *canvas, Janela mundo,Janela vp);
+		void desenha(TCanvas *canvas, Janela mundo,Janela vp, int tipoReta);
 
                void mostra(TListBox *listbox);
 

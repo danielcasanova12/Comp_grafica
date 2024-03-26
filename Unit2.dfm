@@ -2,8 +2,8 @@ object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 'Form2'
-  ClientHeight = 955
-  ClientWidth = 970
+  ClientHeight = 946
+  ClientWidth = 964
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -222,5 +222,17 @@ object Form2: TForm2
     Caption = 'Parar'
     TabOrder = 15
     OnClick = Button9Click
+  end
+  object rgTipoReta: TRadioGroup
+    Left = 656
+    Top = 256
+    Width = 185
+    Height = 105
+    Caption = 'Tipo da reta'
+    Items.Strings = (
+      'normal'
+      'ddd'
+      'asdfadsadf')
+    TabOrder = 16
   end
 end

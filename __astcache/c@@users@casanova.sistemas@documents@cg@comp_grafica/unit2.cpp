@@ -61,7 +61,7 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 	display.poligono.push_back(Pol);
 	Pol.pontos.clear();
 
-	display.desenha(Form2->Image1->Canvas,mundo,vp);
+	display.desenha(Form2->Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
     display.mostra(Form2->lbPoligonos);
 
 	// // Adicionando um círculo
@@ -138,7 +138,7 @@ void __fastcall TForm2::Image1MouseDown(TObject *Sender, TMouseButton Button, TS
 			xW = xVp2Mundo(X,mundo,vp);
 			yW = yVp2Mundo(Y,mundo,vp);
 			Pol.pontos.push_back(Ponto(xW,yW));
-            Pol.desenhar(Image1->Canvas,mundo,vp);
+			Pol.desenhar(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
 
 	   }else
 			if(Button == mbRight)
@@ -148,7 +148,7 @@ void __fastcall TForm2::Image1MouseDown(TObject *Sender, TMouseButton Button, TS
 				display.poligono.push_back(Pol);
 				Pol.pontos.clear();
 				inicia = false;
-				display.desenha(Form2->Image1->Canvas,mundo,vp);
+				display.desenha(Form2->Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
                 display.mostra(Form2->lbPoligonos);
 
 			}
@@ -198,8 +198,8 @@ void TForm2::atualizaMundo(Janela mundo)
   display.poligono[1].pontos[0].x = mundo.xMax;
   display.poligono[1].pontos[1].x = mundo.xMin;
   
-	display.desenha(Form2->Image1->Canvas,mundo,vp);
-	Pol.desenhar(Image1->Canvas,mundo,vp);
+	display.desenha(Form2->Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+	Pol.desenhar(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
 	
 }
 

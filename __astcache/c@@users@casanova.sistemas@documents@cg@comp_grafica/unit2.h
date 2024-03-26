@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 
 #ifndef Unit2H
 #define Unit2H
@@ -39,6 +39,7 @@ __published:	// IDE-managed Components
 	TButton *Button7;
 	TButton *Button8;
 	TButton *Button9;
+	TRadioGroup *rgTipoReta;
 	void __fastcall Image1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Image1Click(TObject *Sender);
