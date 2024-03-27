@@ -14,6 +14,7 @@ class DisplayFile{
 
 		void mostra(TListBox* lb);
 		void desenha(TCanvas* canvas, Janela mundo, Janela vp, int tipoReta);
+		void transladar(TMemo *memo,TCanvas* canvas, Janela mundo, Janela vp, int tipoReta, int contId, int tx, int ty);
 		void escalonar(TCanvas* canvas, Janela mundo, Janela vp, int tipoReta, int contId, double ex, double ey);
 		void rotacionar(TCanvas* canvas, Janela mundo, Janela vp, int tipoReta,int contId,double teta);
 		void clipping(TMemo* memo,TCanvas* canvas, Janela mundo, Janela vp,Janela jClipping, int tipoReta);
