@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 
 #pragma hdrstop
 
@@ -168,3 +168,13 @@ AnsiString Poligono::toString(){
   return IntToStr(id) + " - " + tipo + " - " +
 		 IntToStr((int)pontos.size()) + " pontos";
 }
+
+
+void Poligono::translacao(double dx, double dy){
+	for (int i = 0; i < pontos.size(); i++) {
+		pontos[i].translacao(dx, dy);
+	}
+
+}
+
+

@@ -16,6 +16,9 @@ class Poligono{
 	void mostra(TListBox* lb);
 	void desenha(TCanvas* canvas, Janela mundo, Janela vp,int tipoReta);
 	AnsiString toString();
+	void translacao(double dx, double dy);
+
+
 	void desenhaCircunferencia(TCanvas* canvas, int xc,int yc,int r);
 
 	private:

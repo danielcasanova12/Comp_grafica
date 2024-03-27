@@ -1,0 +1,276 @@
+﻿//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit2.h"
+
+#include "uPonto.h"
+#include "uJanela.h"
+#include "uPoligono.h"
+#include "uDisplayfile.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+Janela mundo(-250,-250,250,250);
+Janela vp(0,0,500,500);
+Janela jClipping(-100,-100,100,100);
+Ponto aux;
+Poligono pol;
+DisplayFile display;
+
+bool inicia = false;
+bool clippingAtivo = false;
+int contId = 0;
+int polIndex = -1;
+
+double xVp2W(int x, Janela mundo, Janela vp){
+  return ((x-vp.xMin)/(vp.xMax-vp.xMin)) * (mundo.xMax - mundo.xMin) + mundo.xMin;
+}
+
+double yVp2W(int y, Janela mundo, Janela vp){
+  return (1-(y-vp.yMin)/(vp.yMax-vp.yMin)) * (mundo.yMax - mundo.yMin) + mundo.yMin;
+}
+
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+  //ShowMessage(FloatToStr(mundo.xMin));
+  //display.poligonos.push_back(pol);
+  //display.desenha(Image1->Canvas, mundo, vp);
+
+  // Inserindo o eixo vertical no displayfile
+  pol.tipo = 'E';
+  pol.id   = contId++;
+  pol.pontos.push_back(Ponto(0, mundo.yMax));
+  pol.pontos.push_back(Ponto(0, mundo.yMin));
+  display.poligonos.push_back(pol);
+  pol.pontos.clear();
+
+  // Inserindo o eixo horizontal no displayfile
+  pol.tipo = 'E';
+  pol.id   = contId++;
+  pol.pontos.push_back(Ponto(mundo.xMin, 0));
+  pol.pontos.push_back(Ponto(mundo.xMax, 0));
+  display.poligonos.push_back(pol);
+  pol.pontos.clear();
+
+  pol.tipo = 'R';
+  pol.id   = contId++;
+  pol.pontos.push_back(Ponto(jClipping.xMax,jClipping.yMax));
+  pol.pontos.push_back(Ponto(jClipping.xMin,jClipping.yMax));
+  pol.pontos.push_back(Ponto(jClipping.xMin,jClipping.yMin));
+  pol.pontos.push_back(Ponto(jClipping.xMax,jClipping.yMin));
+  pol.pontos.push_back(Ponto(jClipping.xMax,jClipping.yMax));
+
+  display.poligonos.push_back(pol);
+  pol.pontos.clear();
+
+  display.mostra(lbPoligonos);
+  display.desenha(Image1->Canvas, mundo, vp, rgTipoReta->ItemIndex);
+
+  //pol.pontos.push_back(Ponto(10,10));
+}
+
+
+
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Image1MouseMove(TObject *Sender, TShiftState Shift, int X,
+          int Y)
+{
+	int xw, yw;
+	xw = xVp2W(X,mundo,vp);
+	yw = yVp2W(Y,mundo,vp);
+	LabelVp -> Caption = "(" + IntToStr(X) + ", " + IntToStr(Y) + ")";
+	LabelMundo -> Caption =  "(" + IntToStr(xw) + ", " + IntToStr(yw) + ")";
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm1::Image1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+		  int X, int Y)
+{
+	if(inicia){
+		if(Button == mbLeft){
+			if(pol.tipo == 'C'){
+            	aux.x = xVp2W(X,mundo,vp);
+				aux.y = yVp2W(Y,mundo,vp);
+				pol.pontos.push_back(aux);
+				pol.mostra(lbPontos);
+				pol.desenha(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+
+			}
+			else{
+				aux.x = xVp2W(X,mundo,vp);
+				aux.y = yVp2W(Y,mundo,vp);
+				pol.pontos.push_back(aux);
+				pol.mostra(lbPontos);
+				pol.desenha(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+			}
+		}else{
+			inicia = false;
+			pol.id = contId++;
+			display.poligonos.push_back(pol);
+			pol.pontos.clear();
+			display.mostra(lbPoligonos);
+		}
+
+
+	}
+
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+	pol.tipo = 'R';
+	inicia = true;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+	mundo.xMin = StrToFloat(edXMin->Text);
+	mundo.xMax = StrToFloat(edXMax->Text);
+	mundo.yMin = StrToFloat(edYMin->Text);
+	mundo.yMax = StrToFloat(edYMax->Text);
+
+	display.poligonos[0].pontos[0].y = mundo.yMax;
+	display.poligonos[0].pontos[1].y = mundo.yMin;
+
+	display.poligonos[1].pontos[0].x = mundo.xMin;
+	display.poligonos[1].pontos[1].x = mundo.xMax;
+
+	display.desenha(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm1::rgTipoRetaClick(TObject *Sender)
+{
+	display.desenha(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button3Click(TObject *Sender)
+{
+	pol.tipo = 'C';
+	inicia = true;
+}
+//---------------------------------------------------------------------------
+
+void TForm1::atualizaMundo(Janela mundo)
+{
+// ShowMessage(edXmax -> Text);
+  edYmin -> Text = mundo.yMin;
+  edYmax -> Text = mundo.yMin;
+  edXmin -> Text = mundo.xMax;
+  edXmax -> Text = mundo.xMax;
+
+ display.poligonos[0].pontos[0].y = mundo.yMax;
+  display.poligonos[0].pontos[1].y = mundo.yMin;
+  display.poligonos[1].pontos[0].x = mundo.xMax;
+  display.poligonos[1].pontos[1].x = mundo.xMin;
+
+	display.desenha(Form1->Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+	pol.desenhar(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+
+}
+
+
+
+void __fastcall TForm1::Button4Click(TObject *Sender)
+{
+//	int tx = StrToFloat(TransldX->Text);
+//	int ty = StrToFloat(TransldY->Text);
+//
+//
+//
+//	if(polIndex >= 2)
+//	{
+//	  display.transladar(Memo1,Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex,polIndex,tx,ty);
+//	}
+
+    double dx, dy;
+	dx = StrToFloat(TransldX->Text);
+	dy = StrToFloat(TransldY->Text);
+	display.poligonos[lbPoligonos->ItemIndex].translacao(dx, dy);
+	atualizaMundo(mundo);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::lbPoligonosClick(TObject *Sender)
+{
+	polIndex = lbPoligonos->ItemIndex;
+    display.poligonos[polIndex].mostra(lbPontos);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Button5Click(TObject *Sender)
+{
+	double ex = StrToFloat(EscX->Text);
+	double ey = StrToFloat(EscY->Text);
+	display.escalonar(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex,polIndex,ex,ey);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Button7Click(TObject *Sender)
+{
+	display.escalonar(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex,polIndex,-1,1);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button8Click(TObject *Sender)
+{
+	display.escalonar(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex,polIndex,1,-1);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button9Click(TObject *Sender)
+{
+	display.escalonar(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex,polIndex,-1,-1);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button6Click(TObject *Sender)
+{
+	double ang = StrToFloat(TetaRot->Text);
+	ang = ang * M_PI / 180.0;
+	display.rotacionar(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex,polIndex,ang);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Button10Click(TObject *Sender)
+{
+	clippingAtivo = !clippingAtivo;
+	lbClippingActive->Caption = clippingAtivo?"True":"False";
+	if(clippingAtivo){
+        display.clipping(Memo1,Image1->Canvas,mundo,vp,jClipping,rgTipoReta->ItemIndex);
+	}
+    display.mostra(lbPoligonos);
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button11Click(TObject *Sender)
+{
+	//Memo1->Lines->Add(contId);
+	display.casteujou(Memo1,Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex,polIndex);
+    display.mostra(lbPoligonos);
+}
+//---------------------------------------------------------------------------
+
+

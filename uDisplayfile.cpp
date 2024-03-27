@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 
 #pragma hdrstop
 
@@ -199,16 +199,7 @@ void DisplayFile::desenha(
     }
 }
 
-void DisplayFile::transladar(TMemo* memo, TCanvas* canvas, Janela mundo,
-    Janela vp, int tipoReta, int contId, int tx, int ty)
-{
-    //memo->Lines->Add(poligonos[contId].pontos.size());
-    for (int i = 0; i < poligonos[contId].pontos.size(); i++) {
-        poligonos[contId].pontos[i].x += tx;
-        poligonos[contId].pontos[i].y += ty;
-    }
-    desenha(canvas, mundo, vp, tipoReta);
-}
+
 
 void DisplayFile::escalonar(TCanvas* canvas, Janela mundo, Janela vp,
     int tipoReta, int contId, double ex, double ey)

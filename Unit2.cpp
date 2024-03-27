@@ -75,6 +75,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 }
 
 
+
 //---------------------------------------------------------------------------
 
 
@@ -154,6 +155,7 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 
 
 
+
 void __fastcall TForm1::rgTipoRetaClick(TObject *Sender)
 {
 	display.desenha(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
@@ -167,11 +169,45 @@ void __fastcall TForm1::Button3Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+//void TForm1::atualizaMundo(Janela mundo)
+//{
+//
+//  edYmin -> Text = mundo.yMin;
+//  edYmax -> Text = mundo.yMin;
+//  edXmin -> Text = mundo.xMax;
+//  edXmax -> Text = mundo.xMax;
+//
+//  display.poligonos[0].pontos[0].y = mundo.yMax;
+//  display.poligonos[0].pontos[1].y = mundo.yMin;
+//  display.poligonos[1].pontos[0].x = mundo.xMax;
+//  display.poligonos[1].pontos[1].x = mundo.xMin;
+//
+//	display.desenha(Form1->Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+//	pol.desenhar(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+//
+//}
+
+
+
+
 void __fastcall TForm1::Button4Click(TObject *Sender)
 {
-	int tx = StrToFloat(TransldX->Text);
-	int ty = StrToFloat(TransldY->Text);
-	display.transladar(Memo1,Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex,polIndex,tx,ty);
+//	int tx = StrToFloat(TransldX->Text);
+//	int ty = StrToFloat(TransldY->Text);
+//
+//
+//
+//	if(polIndex >= 2)
+//	{
+//	  display.transladar(Memo1,Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex,polIndex,tx,ty);
+//	}
+
+    double dx, dy;
+	dx = StrToFloat(TransldX->Text);
+	dy = StrToFloat(TransldY->Text);
+	display.poligonos[lbPoligonos->ItemIndex].translacao(dx, dy);
+	display.desenha(Image1->Canvas,mundo,vp,rgTipoReta->ItemIndex);
+//	atualizaMundo(mundo);
 }
 //---------------------------------------------------------------------------
 
@@ -238,6 +274,5 @@ void __fastcall TForm1::Button11Click(TObject *Sender)
     display.mostra(lbPoligonos);
 }
 //---------------------------------------------------------------------------
-
 
 

@@ -21,7 +21,7 @@ class Ponto{
 		int yW2Vp(Janela mundo, Janela vp);
 
         AnsiString mostra();
-
+        void translacao(double dx, double dy)
 
 };
 
