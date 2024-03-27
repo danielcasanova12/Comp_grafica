@@ -1,0 +1,39 @@
+//---------------------------------------------------------------------------
+
+#ifndef uPontoH
+#define uPontoH
+#include "uJanela.h"
+#include <Vcl.Forms.hpp>
+#include <Vcl.Controls.hpp>
+
+
+
+// #endif
+
+class Ponto{
+	public:
+		double x;
+		double y;
+
+		Ponto();
+		Ponto(double nx, double ny);
+		int xW2Vp(Janela mundo, Janela vp);
+		int yW2Vp(Janela mundo, Janela vp);
+
+        AnsiString mostra();
+
+
+};
+
+Ponto::transladar(TMemo* memo, TCanvas* canvas, Janela mundo,
+	Janela vp, int tipoReta, int contId, int tx, int ty)
+{
+    //memo->Lines->Add(poligonos[contId].pontos.size());
+    for (int i = 0; i < poligonos[contId].pontos.size(); i++) {
+        poligonos[contId].pontos[i].x += tx;
+        poligonos[contId].pontos[i].y += ty;
+    }
+    desenha(canvas, mundo, vp, tipoReta);
+}
+
+#endif
